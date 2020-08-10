@@ -3,6 +3,7 @@ package com.example.demo.Places;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -34,12 +35,12 @@ public class PlaceController {
         
 
     
-    
+    @CrossOrigin
     @GetMapping("find/{scenery}/{budgetLimit}")
     public List<PlaceData> findBySceneryAndBudgetLimitLessThanEqual(@PathVariable String scenery, @PathVariable("budgetLimit") int budgetLimit) {
         //int budgetLimitInt = Integer.parseInt(budgetLimit);
-        int incrementedValue = budgetLimit + 555;
-        System.out.println("incoming value plus 555:"+ incrementedValue);
+        // int incrementedValue = budgetLimit + 555;
+        // System.out.println("incoming value plus 555:"+ incrementedValue);
         if(scenery.equals("all") && budgetLimit >= 5000){
             return repository.findAll();
         }
